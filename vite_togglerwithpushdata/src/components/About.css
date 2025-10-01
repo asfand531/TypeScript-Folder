@@ -1,0 +1,23 @@
+.heading {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.container {
+  position: relative;
+  top: 80px;
+  padding: 0 40px;
+  text-align: justify;
+}
+
+.dark_about_main_container {
+  color: white;
+}
+
+.light_about_main_container {
+  color: rgb(56, 56, 56);
+}
+
+.listItems {
+  margin-left: 50px;
+}

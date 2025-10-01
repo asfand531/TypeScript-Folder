@@ -1,0 +1,222 @@
+form {
+  display: flex;
+  flex-direction: column;
+  overflow-wrap: break-word;
+  margin: 30px;
+  padding: 40px;
+  border: 1px solid transparent;
+  border-radius: 40px;
+  background: rgba(216, 216, 216, 0.5);
+}
+
+#priority,
+.add_btn,
+.reset_btn {
+  cursor: pointer;
+}
+
+.add_btn_container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.add_btn,
+.reset_btn {
+  color: rgb(56, 56, 56);
+  font-weight: bold;
+  padding: 3px 10px;
+  border: none;
+  border-radius: 10px;
+}
+
+.first_btn,
+.prev_btn,
+.next_btn,
+.last_btn {
+  color: rgb(56, 56, 56);
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  padding: 3px 10px;
+  cursor: pointer;
+}
+
+.input {
+  border: none;
+  border-radius: 10px;
+  padding: 7px 10px;
+}
+
+.label {
+  margin-top: 15px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  border: 1px solid white;
+  width: 400px;
+  padding: 10px;
+  border-collapse: collapse;
+}
+
+section > form > textarea {
+  resize: vertical;
+}
+
+.table_footer > button:disabled,
+.table_footer > select:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.dark_hero_container {
+  color: white;
+  position: relative;
+  top: 55px;
+
+  thead {
+    background-color: rgb(41, 41, 41);
+  }
+
+  tr:nth-child(even) {
+    background-color: rgb(41, 41, 41);
+  }
+
+  tfoot > tr > td {
+    border: none;
+  }
+
+  .add_btn,
+  .reset_btn {
+    color: white;
+    background-color: rgb(41, 41, 41);
+  }
+}
+
+.light_hero_container {
+  color: rgb(56, 56, 56);
+  position: relative;
+  top: 55px;
+
+  th,
+  td {
+    border: 1px solid rgb(56, 56, 56);
+    width: 400px;
+    padding: 10px;
+    border-collapse: collapse;
+  }
+
+  .add_btn,
+  .reset_btn,
+  .first_btn,
+  .prev_btn,
+  .next_btn,
+  .last_btn {
+    background: rgb(194, 194, 194);
+    color: rgb(56, 56, 56);
+  }
+
+  thead {
+    background-color: rgb(184, 184, 184);
+  }
+
+  tr:nth-child(even) {
+    background-color: rgb(184, 184, 184);
+  }
+
+  tfoot > tr > td {
+    border: none;
+  }
+
+  tfoot > tr > td > div > select {
+    background-color: rgb(194, 194, 194);
+  }
+
+  form > select {
+    background-color: white;
+  }
+}
+
+.table_footer {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.numberOfPages {
+  font-weight: bold;
+  cursor: default;
+}
+
+.perPage {
+  border: none;
+  border-radius: 5px;
+  padding: 2px 5px;
+  cursor: pointer;
+}
+
+.todoSection {
+  margin: 30px;
+}
+
+.totalTodos {
+  cursor: default;
+  font-weight: 500;
+}
+
+.todoHeading {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: default;
+}
+
+.heading {
+  cursor: default;
+}
+
+.alertSection {
+  display: flex;
+  justify-content: center;
+}
+
+.alertBox {
+  background: rgb(206, 255, 133);
+  color: rgb(0, 90, 0);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: fit-content;
+  border: 2px solid greenyellow;
+  border-radius: 10px;
+  padding: 5px 15px;
+  position: absolute;
+  gap: 50px;
+  cursor: default;
+}
+
+.closeIcon {
+  cursor: pointer;
+}
+
+.add_btn:disabled,
+.reset_btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.successIcon_withPara {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
