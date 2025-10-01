@@ -11,59 +11,47 @@ function App() {
   const fetchPost = async () => {
     setLoading(true);
 
+    const successMessages = {
+      100: "Continue",
+      200: "OK 'Request successful!'",
+      201: "Created, 'New resource created!'",
+      204: "No Content, 'Successful, but no body returned!'",
+    };
+
+    const errorMessages = {
+      301: "Moved Permanently!",
+      302: "Found!",
+      304: "Not Modified!",
+      400: "Bad Request!",
+      401: "Unauthorized!",
+      403: "Forbidden!",
+      404: "Not Found!",
+      429: "Too Many Requests!",
+      500: "Internal Server Error!",
+      502: "Bad Gateway!",
+      503: "Service Unavailable!",
+      504: "Gateway Timeout!",
+    };
+
     try {
       const response = await axios.get("https://dummyjson.com/products/");
-      const data = response.data.products;
-      const status = response.status;
+      const { data, status } = response;
 
-      // 1. Informational: It means request was recieved and is continuing.
-      if (status === 100) {
-        setStatus(status + " -> Continue");
-      }
-      // 2. Success: The request succeeded.
-      else if (status === 200) {
-        response.statusText = "You win!";
-        setStatus(status + " -> OK 'Request successful!'");
-      } else if (status === 201) {
-        setStatus(status + " -> Created, 'New resource created!'");
-      } else if (status === 204) {
-        setStatus(
-          status + " -> No Content, 'Successful, but no body returned!'"
-        );
-      }
+      setStatus(
+        successMessages[status]
+          ? `${status} -> ${successMessages[status]}`
+          : `${status} -> Unknown status`
+      );
 
-      console.log(data);
+      console.log(data.products);
     } catch (error) {
-      // 3. Redirection: Client must take additional action.
-      if (error.status === 301) {
-        setStatus(error.status + " -> Moved Permanently!");
-      } else if (error.status === 302) {
-        setStatus(error.status + " -> Found!");
-      } else if (error.status === 304) {
-        setStatus(error.status + " -> Not Modified!");
-      }
-      // 4. Client Errors: Something is wrong with the request.
-      else if (error.status === 400) {
-        setStatus(error.status + " -> Bad Request!");
-      } else if (error.status === 401) {
-        setStatus(error.status + " -> Unauthorized!");
-      } else if (error.status === 403) {
-        setStatus(error.status + " -> Forbidden!");
-      } else if (error.status === 404) {
-        setStatus(error.status + " -> Not Found!");
-      } else if (error.status === 429) {
-        setStatus(error.status + " -> Too Many Requests!");
-      }
-      // 5. Server Errors: Something went wrong on the server.
-      else if (error.status === 500) {
-        setStatus(error.status + " -> Internal Server Error!");
-      } else if (error.status === 502) {
-        setStatus(error.status + " -> Bad Gateway!");
-      } else if (error.status === 503) {
-        setStatus(error.status + " -> Service unavaliable!");
-      } else if (error.status === 504) {
-        setStatus(error.status + " -> Gateway Timeout!");
-      }
+      const status = error.response?.status;
+
+      setStatus(
+        errorMessages[status]
+          ? `${status} -> ${errorMessages[status]}`
+          : "An unexpected error occurred!"
+      );
 
       console.error(error);
     } finally {
