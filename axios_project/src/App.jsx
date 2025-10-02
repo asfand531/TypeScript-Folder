@@ -13,7 +13,7 @@ function App() {
 
     const successMessages = {
       100: "Continue",
-      200: "OK 'Request successful!'",
+      200: "OK, 'Request successful!'",
       201: "Created, 'New resource created!'",
       204: "No Content, 'Successful, but no body returned!'",
     };
