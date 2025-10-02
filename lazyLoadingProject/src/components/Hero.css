@@ -1,0 +1,25 @@
+.con {
+  height: 100vh;
+  background-image: url("../images/home_background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: default;
+}
+
+.container_section {
+  border: 1px solid rgb(121, 121, 121);
+  border-radius: 30px;
+  height: 300px;
+  width: 70%;
+  background: rgba(210, 210, 210, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 15px 25px 30px rgba(255, 255, 255, 0.3);
+}
