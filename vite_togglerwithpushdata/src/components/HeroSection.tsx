@@ -224,8 +224,8 @@ function HeroSection({ theme }: HeroSectionProps): React.JSX.Element {
                 onClick={handleReset}
                 title="Reset"
                 disabled={
-                  inputKM.priority.trim() === "" ||
-                  inputKM.title.trim() === "" ||
+                  inputKM.priority.trim() === "" &&
+                  inputKM.title.trim() === "" &&
                   inputKM.todo.trim() === ""
                 }
               >
