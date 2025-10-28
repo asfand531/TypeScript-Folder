@@ -24,8 +24,8 @@ const router = createBrowserRouter([
     path: "/about",
     element: (
       <>
-        <Suspense fallback={<p>Loading...</p>}>
-          <Navbar />
+        <Navbar />
+        <Suspense fallback={<p>Loading About...</p>}>
           <About />
         </Suspense>
       </>
@@ -35,8 +35,8 @@ const router = createBrowserRouter([
     path: "/contact",
     element: (
       <>
-        <Suspense fallback={<p>Loading...</p>}>
-          <Navbar />
+        <Navbar />
+        <Suspense fallback={<p>Loading Contact...</p>}>
           <Contact />
         </Suspense>
       </>
