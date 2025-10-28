@@ -23,7 +23,7 @@ function About({ theme }: AboutProps): React.JSX.Element {
     >
       <h2 className="heading">About Us</h2>
       <p>
-        Welcome to Todoers, your simple and powerful task management companion.
+        Welcome to Todoer, your simple and powerful task management companion.
         We believe staying organized shouldn't be complicated. That's why we
         created a clean and intuitive Todo platform that helps you focus on what
         truly matters—getting things done. Whether you're managing daily chores,
