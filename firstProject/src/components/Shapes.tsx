@@ -5,7 +5,7 @@ function Shapes() {
 
   type Shape = Circle | Square | Rectangle;
 
-  let shapeType = Number(
+  const shapeType = Number(
     prompt(
       "Please choose your shape (number from 1 to 3):\n1. Circle\n2. Square\n3. Rectangle"
     )
