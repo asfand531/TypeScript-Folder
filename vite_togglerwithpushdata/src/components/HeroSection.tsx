@@ -24,9 +24,8 @@ function HeroSection({ theme }: HeroSectionProps): React.JSX.Element {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [showAlertBox, setShowAlertBox] = useState<boolean>(false);
   const showPerPage: number[] = [5, 10, 15, 20];
-  let [currentPage, setCurrentPage] = useState<CurrentPage>(1);
-  let [itemsPerPage, setItemsPerPage] = useState<ItemsPerPage>(5);
-  let totalPages: number;
+  const [currentPage, setCurrentPage] = useState<CurrentPage>(1);
+  const [itemsPerPage, setItemsPerPage] = useState<ItemsPerPage>(5);
 
   const options: string[] = [
     "Urgent & Important (Do First)",
@@ -72,6 +71,21 @@ function HeroSection({ theme }: HeroSectionProps): React.JSX.Element {
     }, 5000);
   };
 
+  const totalPages: number = Math.ceil(todos.length / itemsPerPage);
+
+  const handleFirstPage = () => setCurrentPage(1);
+  const handlePrevPage = () => setCurrentPage((prev) => Math.max(prev - 1, 1));
+  const handleNextPage = () =>
+    setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+  const handleLastPage = () => setCurrentPage(totalPages);
+
+  const handleItemsPerPageChange = (
+    e: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    setItemsPerPage(Number(e.target.value));
+    setCurrentPage(1);
+  };
+
   const handleCloseIcon = () => {
     setShowAlertBox(false);
   };
@@ -105,7 +119,7 @@ function HeroSection({ theme }: HeroSectionProps): React.JSX.Element {
   const showAlert = (): React.JSX.Element => {
     return (
       <p className="alertBox">
-        <span className="successIcon_withPara">
+        <span className="successPara">
           {successIcon} Your todo has been added in the table
         </span>
         {closeIcon}
@@ -131,7 +145,7 @@ function HeroSection({ theme }: HeroSectionProps): React.JSX.Element {
           {showAlertBox && showAlert()}
         </section>
 
-        <section>
+        <section className="formSection">
           <form
             onSubmit={(e) => {
               e.preventDefault();
@@ -229,28 +243,38 @@ function HeroSection({ theme }: HeroSectionProps): React.JSX.Element {
           <table>
             <thead>
               <tr>
-                <th>Priority Level</th>
+                <th className="numberCol">No#</th>
+                <th className="priorityCol">Priority Level</th>
                 <th>Title</th>
                 <th>Todo</th>
               </tr>
             </thead>
+
             <tbody>
-              {todos.map((item, index) => (
-                <tr key={index}>
-                  <td>{item.priority}</td>
-                  <td>{item.title}</td>
-                  <td>{item.todo}</td>
-                </tr>
-              ))}
+              {todos
+                .slice(
+                  (currentPage - 1) * itemsPerPage,
+                  currentPage * itemsPerPage
+                )
+                .map((item, index) => (
+                  <tr key={index}>
+                    <td className="numberCol">{index + 1}</td>
+                    <td className="priorityCol">{item.priority}</td>
+                    <td>{item.title}</td>
+                    <td>{item.todo}</td>
+                  </tr>
+                ))}
             </tbody>
+
             {todos.length > 0 && (
               <tfoot>
                 <tr>
-                  <td colSpan={3}>
+                  <td colSpan={4}>
                     <div className="table_footer">
                       <button
                         className="first_btn"
                         title="Go to first page"
+                        onClick={handleFirstPage}
                         disabled={currentPage === 1}
                       >
                         &lt;&lt; First
@@ -258,22 +282,28 @@ function HeroSection({ theme }: HeroSectionProps): React.JSX.Element {
                       <button
                         className="prev_btn"
                         title="Go to previous page"
+                        onClick={handlePrevPage}
                         disabled={currentPage === 1}
                       >
                         &lt; Prev
                       </button>
-                      <span className="numberOfPages">1 of 1 page</span>
+                      <span className="numberOfPages">
+                        {currentPage} of {totalPages} page
+                        {totalPages > 1 ? "s" : ""}
+                      </span>
                       <button
                         className="next_btn"
                         title="Go to next page"
-                        disabled={currentPage === 1}
+                        onClick={handleNextPage}
+                        disabled={currentPage === totalPages}
                       >
                         Next &gt;
                       </button>
                       <button
                         className="last_btn"
                         title="Go to last page"
-                        disabled={currentPage === 1}
+                        onClick={handleLastPage}
+                        disabled={currentPage === totalPages}
                       >
                         Last &gt;&gt;
                       </button>
@@ -282,15 +312,15 @@ function HeroSection({ theme }: HeroSectionProps): React.JSX.Element {
                         id="item_per_page"
                         className="perPage"
                         title="Items per page"
+                        value={itemsPerPage}
+                        onChange={handleItemsPerPageChange}
                         disabled={todos.length <= 5}
                       >
-                        {showPerPage.map((number, index) => {
-                          return (
-                            <option key={index} value={number}>
-                              {number} / page
-                            </option>
-                          );
-                        })}
+                        {showPerPage.map((number, index) => (
+                          <option key={index} value={number}>
+                            {number} / page
+                          </option>
+                        ))}
                       </select>
                     </div>
                   </td>

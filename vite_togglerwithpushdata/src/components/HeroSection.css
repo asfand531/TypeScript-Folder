@@ -2,7 +2,6 @@ form {
   display: flex;
   flex-direction: column;
   overflow-wrap: break-word;
-  margin: 30px;
   padding: 40px;
   border: 1px solid transparent;
   border-radius: 40px;
@@ -164,7 +163,7 @@ section > form > textarea {
 }
 
 .todoSection {
-  margin: 30px;
+  margin: 40px 0;
 }
 
 .totalTodos {
@@ -214,9 +213,19 @@ section > form > textarea {
   opacity: 0.5;
 }
 
-.successIcon_withPara {
+.successPara {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
+}
+
+.numberCol {
+  max-width: 50px;
+  text-align: center;
+}
+
+.priorityCol {
+  max-width: 200px;
+  text-align: center;
 }

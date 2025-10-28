@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NavbarwithToggler from "./components/NavbarwithToggler";
 import HeroSection from "./components/HeroSection";
 import About from "./components/About";
+import "./App.css";
 
 type Theme = string;
 
@@ -13,10 +14,12 @@ function App() {
     <>
       <Router>
         <NavbarwithToggler theme={theme} setTheme={setTheme} />
-        <Routes>
-          <Route path="/" element={<HeroSection theme={theme} />} />
-          <Route path="/about" element={<About theme={theme} />} />
-        </Routes>
+        <div className="mainContainer">
+          <Routes>
+            <Route path="/" element={<HeroSection theme={theme} />} />
+            <Route path="/about" element={<About theme={theme} />} />
+          </Routes>
+        </div>
       </Router>
     </>
   );
