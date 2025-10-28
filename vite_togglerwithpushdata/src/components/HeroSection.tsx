@@ -238,7 +238,11 @@ function HeroSection({ theme }: HeroSectionProps): React.JSX.Element {
         <section className="todoSection">
           <div className="todoHeading">
             <h2 className="totalTodos">Todo list</h2>
-            <p className="totalTodos">Total number of todos: {todos.length}</p>
+            <p className="totalTodos">
+              Total number of{" "}
+              <span>{todos.length <= 1 ? "todo" : "todos"}</span>:{" "}
+              {todos.length}
+            </p>
           </div>
           <table>
             <thead>
