@@ -124,25 +124,23 @@ function App() {
               const { id, label, content } = item;
               lastTab = index;
               return (
-                <>
-                  <button
-                    key={index}
-                    role="tab"
-                    className="tab_btn"
-                    onClick={() => {
-                      setActiveTabIndex(index);
-                      if (index === id - 1) {
-                        setActiveTab(true);
-                      } else {
-                        setActiveTab(false);
-                      }
-                    }}
-                    id="tab_btn"
-                  >
-                    {label}
-                    {activeTab && <h2 key={id}>{content}</h2>}
-                  </button>
-                </>
+                <button
+                  key={index}
+                  role="tab"
+                  className="tab_btn"
+                  onClick={() => {
+                    setActiveTabIndex(index);
+                    if (index === id - 1) {
+                      setActiveTab(true);
+                    } else {
+                      setActiveTab(false);
+                    }
+                  }}
+                  id="tab_btn"
+                >
+                  {label}
+                  {activeTab && <h2 key={id}>{content}</h2>}
+                </button>
               );
             })}
           </div>
